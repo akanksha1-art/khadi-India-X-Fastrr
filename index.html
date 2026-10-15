@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fastrr × Khadi India — Customer Journey Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#1F2F6B;
+    --purple-dark:#141F4D;
+    --purple-deep:#0E1636;
+    --purple-100:#E8EBF7;
+    --purple-150:#C8CFEA;
+    --amber:#E07B1F;
+    --amber-dark:#A55410;
+    --amber-100:#FCE8D2;
+    --ink:#1A1710;
+    --muted:#5A5547;
+    --muted-2:#8F8873;
+    --line:#E8DFCB;
+    --paper:#FFFFFF;
+    --bg:#FBF6EC;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-0.015em;margin:0;font-weight:800;}
+  p{margin:0;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  a{color:inherit;}
+  ::selection{background:var(--amber-100);color:var(--amber-dark);}
+
+  .fmark{display:inline-flex;align-items:center;gap:2px;flex-shrink:0;}
+  .fmark .bar{width:16px;height:5px;border-radius:3px;background:#6037D7;transform:rotate(-16deg);}
+  .fmark .bar:nth-child(1){margin-bottom:2px;}
+  .fmark-col{display:flex;flex-direction:column;gap:2px;}
+  .wordmark{font-family:'Space Grotesk',sans-serif;font-weight:700;font-style:italic;font-size:19px;color:var(--ink);letter-spacing:-0.01em;}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(251,246,236,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1120px;margin:0 auto;padding:15px 32px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-brand{display:flex;align-items:center;gap:9px;}
+  .nav-links{display:flex;gap:20px;font-size:12px;font-weight:500;color:var(--muted);}
+  .nav-links a{text-decoration:none;}
+  .nav-links a:hover{color:var(--purple);}
+  .nav-tag{font-size:12px;font-weight:700;color:#fff;background:var(--purple);padding:7px 14px;border-radius:999px;}
+  @media (max-width:1000px){.nav-links{display:none;}}
+
+  .hero{padding:72px 0 54px;position:relative;overflow:hidden;border-bottom:1px solid var(--line);}
+  .hero::before{content:"";position:absolute;top:-170px;right:-150px;width:540px;height:540px;border-radius:50%;background:radial-gradient(circle, var(--purple-100) 0%, transparent 70%);pointer-events:none;}
+  .hero-inner{position:relative;z-index:2;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--purple-dark);background:var(--purple-100);padding:8px 14px;border-radius:999px;margin-bottom:26px;}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);}
+  .hero h1{font-size:clamp(30px,4.3vw,48px);line-height:1.14;max-width:880px;margin-bottom:20px;}
+  .hero h1 span{color:var(--purple);}
+  .hero .sub{font-size:16px;line-height:1.7;color:var(--muted);max-width:690px;margin-bottom:30px;}
+  .hero-meta{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:14px;overflow:hidden;max-width:860px;background:var(--paper);}
+  .hero-meta > div{flex:1;min-width:170px;padding:14px 18px;border-right:1px solid var(--line);}
+  .hero-meta > div:last-child{border-right:none;}
+  .hero-meta .k{font-size:10.2px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted-2);font-weight:600;margin-bottom:5px;}
+  .hero-meta .v{font-size:12.8px;font-weight:600;}
+  .scale-strip{display:flex;flex-wrap:wrap;gap:34px;margin-top:32px;padding-top:24px;border-top:1px solid var(--line);}
+  .scale-item .n{font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:800;color:var(--purple);}
+  .scale-item .l{font-size:11px;color:var(--muted-2);font-weight:600;margin-top:2px;}
+
+  section{padding:64px 0;}
+  .section-head{max-width:740px;margin-bottom:38px;}
+  .kicker{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-dark);display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .kicker::before{content:"";width:22px;height:3px;background:var(--purple);border-radius:2px;}
+  .section-head h2{font-size:clamp(23px,3vw,33px);line-height:1.2;margin-bottom:14px;}
+  .section-head p{font-size:15px;color:var(--muted);line-height:1.7;}
+  .alt-bg{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+
+  .ctx-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .ctx-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px 20px;}
+  .ctx-card .num{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:800;color:#fff;background:var(--purple);width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .ctx-card h3{font-size:14.5px;margin-bottom:8px;line-height:1.3;}
+  .ctx-card p{font-size:12.5px;color:var(--muted);line-height:1.6;}
+  @media (max-width:960px){.ctx-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.ctx-grid{grid-template-columns:1fr;}}
+
+  .co-intro{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;margin-bottom:34px;}
+  @media (max-width:900px){.co-intro{grid-template-columns:1fr;}}
+  .co-copy h2{font-size:clamp(24px,3.2vw,36px);line-height:1.18;margin-bottom:14px;}
+  .co-copy p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:14px;}
+  .co-copy .pull{border-left:4px solid var(--amber);padding:4px 0 4px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;line-height:1.4;color:var(--purple-dark);}
+
+  .mock-wrap{background:var(--purple-deep);border-radius:24px;padding:22px;position:relative;overflow:hidden;}
+  .mock-wrap::before{content:"";position:absolute;top:-80px;right:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle, rgba(242,138,30,.35), transparent 70%);}
+  .mock-label{position:relative;z-index:2;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B9C2E4;margin-bottom:12px;}
+  .mock{position:relative;z-index:2;background:#fff;border-radius:16px;padding:16px;}
+  .mock-item{display:flex;gap:12px;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  .mock-thumb{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--purple),var(--amber));flex-shrink:0;}
+  .mock-item .t{font-size:12px;font-weight:700;line-height:1.3;}
+  .mock-item .s{font-size:10.5px;color:var(--muted-2);margin-top:2px;}
+  .mock-item .p{margin-left:auto;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:14px;}
+  .mock-edd{display:flex;gap:8px;align-items:center;margin:12px 0;font-size:11.2px;color:#1E6B3A;background:#E6F5EC;padding:8px 11px;border-radius:9px;font-weight:600;}
+  .mock-h{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);margin:12px 0 7px;}
+  .opt{display:flex;justify-content:space-between;align-items:center;border:1.5px solid var(--line);border-radius:10px;padding:9px 11px;margin-bottom:7px;font-size:11.6px;font-weight:600;}
+  .opt small{display:block;font-size:9.8px;font-weight:500;color:var(--muted-2);margin-top:2px;}
+  .opt.sel{border-color:var(--purple);background:var(--purple-100);}
+  .opt .badge{font-size:9px;font-weight:700;color:#fff;background:var(--purple);padding:3px 8px;border-radius:999px;white-space:nowrap;}
+  .opt .badge.am{background:var(--amber);}
+  .mock-btn{margin-top:10px;background:var(--ink);color:#fff;text-align:center;font-size:12px;font-weight:700;padding:11px;border-radius:10px;}
+
+  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .feat{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;gap:16px;}
+  .feat .fn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12px;color:#fff;width:32px;height:32px;border-radius:9px;background:var(--purple);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .feat.hi .fn{background:var(--amber);}
+  .feat h4{font-size:15px;margin-bottom:7px;line-height:1.3;}
+  .feat p{font-size:12.8px;color:var(--muted);line-height:1.62;}
+  .feat .stat{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;color:var(--purple-dark);background:var(--purple-100);padding:4px 10px;border-radius:999px;}
+  @media (max-width:860px){.feat-grid{grid-template-columns:1fr;}}
+
+  .eco-band{background:var(--purple-deep);border-radius:22px;padding:38px 36px;color:#fff;position:relative;overflow:hidden;margin-top:26px;}
+  .eco-band::after{content:"";position:absolute;right:-80px;bottom:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle, rgba(242,138,30,.28), transparent 70%);}
+  .eco-band h3{position:relative;z-index:2;font-size:clamp(20px,2.6vw,27px);max-width:660px;line-height:1.28;margin-bottom:12px;color:#fff;}
+  .eco-band > p{position:relative;z-index:2;font-size:13.8px;color:#C6CEEA;line-height:1.7;max-width:680px;}
+  .eco-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14);border-radius:14px;overflow:hidden;margin-top:26px;}
+  .eco-stat{background:rgba(255,255,255,.05);padding:18px 16px;}
+  .eco-stat .n{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--amber);line-height:1;margin-bottom:6px;}
+  .eco-stat .l{font-size:10.8px;color:#A5B0D9;line-height:1.45;}
+  @media (max-width:860px){.eco-grid{grid-template-columns:1fr 1fr;}}
+
+  .mdr-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .mdr-step{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px;}
+  .mdr-step .mn{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:800;color:var(--ink);background:var(--amber);border-radius:8px;padding:5px 10px;display:inline-block;margin-bottom:14px;}
+  .mdr-step h3{font-size:17px;margin-bottom:9px;line-height:1.28;}
+  .mdr-step p{font-size:13px;color:var(--muted);line-height:1.66;}
+  @media (max-width:860px){.mdr-steps{grid-template-columns:1fr;}}
+
+  .mdr-math{margin-top:16px;background:var(--amber-100);border:1px solid #F0CFA0;border-radius:20px;padding:28px 30px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:center;}
+  .mdr-math .mt{grid-column:1/-1;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--amber-dark);}
+  .mm .n{font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;color:var(--purple-dark);line-height:1;}
+  .mm .l{font-size:12.4px;color:#6B4A1E;margin-top:7px;line-height:1.5;}
+  .mdr-math .mf{grid-column:1/-1;font-size:11.5px;color:#8A6A3A;border-top:1px dashed #E3BE86;padding-top:12px;line-height:1.6;}
+  @media (max-width:760px){.mdr-math{grid-template-columns:1fr;}}
+
+  .suite-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .suite{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px;}
+  .suite .st{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:10px;}
+  .suite h3{font-size:17px;margin-bottom:9px;line-height:1.28;}
+  .suite p{font-size:12.8px;color:var(--muted);line-height:1.64;}
+  .suite ul{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px;}
+  .suite li{font-size:12px;color:var(--ink);line-height:1.5;display:flex;gap:8px;}
+  .suite li::before{content:"✓";color:var(--purple);font-weight:800;flex-shrink:0;}
+  @media (max-width:960px){.suite-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:620px){.suite-grid{grid-template-columns:1fr;}}
+
+  .impact-band{background:var(--purple-deep);color:#fff;border-radius:20px;padding:40px 36px;position:relative;overflow:hidden;}
+  .impact-band::after{content:"";position:absolute;right:-60px;bottom:-60px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle, rgba(242,138,30,.3), transparent 70%);}
+  .impact-head{margin-bottom:26px;position:relative;z-index:2;}
+  .impact-head h3{font-size:clamp(20px,2.5vw,26px);max-width:600px;line-height:1.28;color:#fff;}
+  .impact-head p{color:#A5B0D9;font-size:12.4px;margin-top:8px;}
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.12);border-radius:12px;overflow:hidden;position:relative;z-index:2;}
+  .stat-cell{background:rgba(255,255,255,.04);padding:18px 16px;}
+  .stat-cell .n{font-family:'Plus Jakarta Sans',sans-serif;font-size:23px;font-weight:800;color:var(--amber);line-height:1;margin-bottom:7px;}
+  .stat-cell .l{font-size:11px;color:#D3D9EF;line-height:1.48;}
+  .impact-foot{font-size:10.8px;color:#7683B8;margin-top:14px;position:relative;z-index:2;}
+  @media (max-width:760px){.stat-grid{grid-template-columns:1fr 1fr;}}
+
+  .case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .case{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px;}
+  .case .cat{font-size:9.8px;font-weight:700;color:var(--purple-dark);text-transform:uppercase;letter-spacing:.05em;background:var(--purple-100);padding:3px 9px;border-radius:999px;align-self:flex-start;}
+  .case h4{font-size:14.5px;}
+  .case .d{font-size:12px;color:var(--muted);line-height:1.55;}
+  .case .cs{padding-top:8px;border-top:1px solid var(--line);}
+  .case .cs .n{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;color:var(--amber-dark);font-size:18px;}
+  .case .cs .l{font-size:9.5px;color:var(--muted-2);font-weight:600;margin-top:2px;letter-spacing:.04em;}
+  @media (max-width:860px){.case-grid{grid-template-columns:1fr;}}
+
+  .comm-page{background:var(--purple-deep);min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:70px 0 64px;color:#fff;}
+  .comm-top{text-align:center;margin-bottom:28px;}
+  .comm-top .cl{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;}
+  .comm-top h2{font-size:clamp(30px,5vw,50px);color:#fff;}
+  .comm-top p{font-size:13.5px;color:#B0BADD;max-width:640px;margin:10px auto 0;line-height:1.6;}
+  .comm-card{border:1px solid rgba(255,255,255,.16);border-radius:20px;overflow:hidden;background:#18244F;}
+  .comm-head{padding:16px 24px;background:#1E2C63;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .comm-head h3{font-size:15.5px;color:#fff;}
+  .comm-head .bd{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--amber);padding:5px 12px;border-radius:999px;}
+  table.comm{width:100%;border-collapse:collapse;}
+  table.comm th{text-align:left;font-size:10.5px;font-weight:700;padding:11px 24px;background:#0A1130;color:#8F9BC9;text-transform:uppercase;letter-spacing:.06em;}
+  table.comm td{padding:13px 24px;font-size:13.2px;border-top:1px solid rgba(255,255,255,.09);color:#E4E8F6;vertical-align:middle;}
+  table.comm td.mode{font-weight:700;color:#fff;}
+  table.comm td.mode small{display:block;font-weight:500;font-size:11px;color:#8F9BC9;margin-top:3px;line-height:1.4;}
+  table.comm td.rate{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:var(--amber);white-space:nowrap;}
+  table.comm td.ex{font-size:12.6px;color:#B0BADD;white-space:nowrap;}
+  table.comm td.ex b{color:#fff;}
+  table.comm tr.grp td{background:#0A1130;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B9C2E4;padding:9px 24px;}
+  table.comm tr.sec td{background:rgba(242,138,30,.07);}
+  .comm-foot{margin-top:16px;display:grid;grid-template-columns:1.2fr 1fr;gap:14px;}
+  .cf{border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px 20px;font-size:12px;color:#B0BADD;line-height:1.65;background:rgba(255,255,255,.03);}
+  .cf b{color:#fff;}
+  @media (max-width:860px){.comm-foot{grid-template-columns:1fr;}table.comm th,table.comm td{padding:11px 14px;}}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;}
+  .step .sn{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:800;color:#fff;background:var(--purple);border-radius:8px;padding:5px 10px;display:inline-block;margin-bottom:12px;}
+  .step h4{font-size:15px;margin-bottom:7px;}
+  .step p{font-size:12.6px;color:var(--muted);line-height:1.6;}
+  @media (max-width:860px){.steps{grid-template-columns:1fr;}}
+  .cta-band{margin-top:22px;background:var(--purple-deep);border-radius:20px;padding:30px 34px;display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap;color:#fff;}
+  .cta-band h3{font-size:22px;margin-bottom:8px;color:#fff;}
+  .cta-band p{font-size:13px;color:#B0BADD;max-width:520px;line-height:1.6;}
+  .cta-btn{background:var(--amber);color:var(--ink);font-size:13.5px;font-weight:800;padding:13px 26px;border-radius:999px;white-space:nowrap;}
+
+  footer{background:var(--purple-deep);color:#fff;padding:26px 0 30px;border-top:1px solid rgba(255,255,255,.1);}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;}
+  .footer-brand{display:flex;align-items:center;gap:9px;}
+  .footer-brand .wordmark{color:#fff;}
+  .footer-brand .bar{background:#B79CFF;}
+  footer p{color:#8F9BC9;font-size:11.2px;line-height:1.6;max-width:480px;}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (max-width:640px){section{padding:46px 0;}.wrap{padding:0 20px;}}
+
+  .liked{border:2px solid var(--purple);background:linear-gradient(180deg,#fff,var(--purple-100));}
+  .liked .tag{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--purple);padding:3px 9px;border-radius:999px;margin-bottom:8px;}
+  .sub-head{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--purple-dark);margin:34px 0 14px;}
+  .sub-head:first-of-type{margin-top:0;}
+  .eng-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media (max-width:960px){.eng-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:620px){.eng-grid{grid-template-columns:1fr;}}
+  .journeys{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px;}
+  @media (max-width:860px){.journeys{grid-template-columns:1fr;}}
+  .jr{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;}
+  .jr h4{font-size:15px;margin-bottom:12px;}
+  .flow{display:flex;flex-direction:column;gap:8px;}
+  .flow div{font-size:12.4px;color:var(--ink);line-height:1.5;background:var(--purple-100);border-radius:10px;padding:8px 12px;}
+  .flow div b{color:var(--purple-dark);}
+  .cart-price{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+  @media (max-width:640px){.cart-price{grid-template-columns:1fr;}}
+  .cp{border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:22px 24px;background:#18244F;}
+  .cp .l{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B0BADD;margin-bottom:8px;}
+  .cp .n{font-family:'Plus Jakarta Sans',sans-serif;font-size:34px;font-weight:800;color:var(--amber);line-height:1.1;}
+  .cp .n small{font-size:13px;color:#E4E8F6;font-weight:600;}
+  .cp .d{font-size:12px;color:#B0BADD;margin-top:8px;line-height:1.5;}
+  table.comm.eng td.rate{font-size:17px;}
+  table.comm.eng td.mode small{max-width:360px;}
+  table.comm.eng th.c,table.comm.eng td.c{text-align:left;}
+  .mdrfree{display:none;}
+  .comm-page .wrap{width:100%;min-width:0;}
+  .comm-card{overflow-x:auto;}
+  @media (max-width:640px){table.comm td.rate{white-space:normal;font-size:15px !important;}table.comm td.ex{white-space:normal;}table.comm.eng td.mode small{max-width:none;}}
+  :root{--green:#2E7D4F;--green-100:#E1F1E7;}
+  body{background-image:repeating-linear-gradient(0deg,rgba(26,23,16,.018) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,rgba(26,23,16,.018) 0 1px,transparent 1px 4px);}
+  .tri{height:5px;background:linear-gradient(90deg,#E07B1F 0 33.3%,#fff 33.3% 66.6%,#2E7D4F 66.6% 100%);border-bottom:1px solid var(--line);}
+  .jm{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;position:relative;margin-top:8px;}
+  .jm::before{content:"";position:absolute;left:5%;right:5%;top:22px;height:3px;background:var(--purple-150);z-index:0;}
+  .jm a{position:relative;z-index:1;text-decoration:none;text-align:center;}
+  .jm .dot2{width:44px;height:44px;border-radius:50%;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:16px;margin:0 auto 10px;border:4px solid var(--bg);}
+  .jm a:nth-child(even) .dot2{background:var(--amber);}
+  .jm .t{font-size:12.5px;font-weight:800;color:var(--ink);line-height:1.3;}
+  .jm .s{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4;}
+  @media (max-width:860px){.jm{grid-template-columns:1fr 1fr 1fr;row-gap:22px;}.jm::before{display:none;}}
+  @media (max-width:520px){.jm{grid-template-columns:1fr 1fr;}}
+  .persona{display:flex;gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;max-width:760px;margin-bottom:28px;}
+  .persona .av{width:54px;height:54px;border-radius:50%;background:var(--amber);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .persona p{font-size:13.5px;color:var(--muted);line-height:1.6;}
+  .persona p b{color:var(--ink);}
+  .chap{padding:70px 0;}
+  .chap + .chap{border-top:1px solid var(--line);}
+  .chap.dark{background:var(--purple-deep);color:#fff;border:none;}
+  .chap.alt{background:var(--paper);}
+  .ch-head{max-width:780px;margin-bottom:30px;}
+  .ch-pill{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--purple);padding:7px 14px;border-radius:999px;margin-bottom:16px;}
+  .dark .ch-pill{background:var(--amber);color:var(--ink);}
+  .ch-head h2{font-size:clamp(25px,3.4vw,38px);line-height:1.15;margin-bottom:12px;}
+  .dark .ch-head h2{color:#fff;}
+  .scene{border-left:4px solid var(--amber);padding:6px 0 6px 18px;font-size:15px;line-height:1.75;color:var(--muted);max-width:720px;font-style:italic;}
+  .dark .scene{color:#D3D9EF;}
+  .scene b{color:var(--ink);font-style:normal;}
+  .dark .scene b{color:#fff;}
+  .ch-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:start;}
+  .ch-grid.rev{grid-template-columns:.95fr 1.05fr;}
+  @media (max-width:900px){.ch-grid,.ch-grid.rev{grid-template-columns:1fr;}}
+  .vbox{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;margin-bottom:14px;}
+  .alt .vbox{background:var(--bg);}
+  .dark .vbox{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);}
+  .vbox .vh{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:10px;}
+  .dark .vbox .vh{color:var(--amber);}
+  .vbox h4{font-size:16px;margin-bottom:8px;}
+  .dark .vbox h4{color:#fff;}
+  .vbox p{font-size:13px;color:var(--muted);line-height:1.66;}
+  .dark .vbox p{color:#C6CEEA;}
+  .vbox ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;}
+  .vbox li{font-size:12.8px;line-height:1.55;display:flex;gap:9px;}
+  .dark .vbox li{color:#E4E8F6;}
+  .vbox li::before{content:"✓";color:var(--green);font-weight:800;flex-shrink:0;}
+  .dark .vbox li::before{color:var(--amber);}
+  .without{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+  @media (max-width:640px){.without{grid-template-columns:1fr;}}
+  .wo{border-radius:14px;padding:16px 18px;font-size:12.8px;line-height:1.6;}
+  .wo b{display:block;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+  .wo.no{background:#F6E2DC;color:#7A2E1F;}
+  .wo.no b{color:#B03A22;}
+  .wo.yes{background:var(--green-100);color:#1B4D31;}
+  .wo.yes b{color:var(--green);}
+  .device{background:#0E1636;border-radius:30px;padding:12px;max-width:340px;margin:0 auto;box-shadow:0 18px 40px rgba(14,22,54,.25);}
+  .screen{background:#fff;border-radius:20px;overflow:hidden;}
+  .dh{padding:12px 14px;display:flex;align-items:center;gap:10px;color:#fff;font-size:13px;font-weight:700;}
+  .dh.wa{background:#075E54;}
+  .dh.ai{background:var(--purple);}
+  .dh .ic{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
+  .dh small{display:block;font-weight:500;font-size:10.5px;opacity:.85;}
+  .chat{padding:14px 12px;display:flex;flex-direction:column;gap:9px;min-height:300px;}
+  .chat.wa{background:#ECE5DD;}
+  .chat.ai{background:#F7F5FB;}
+  .bub{max-width:86%;padding:9px 12px;border-radius:12px;font-size:12px;line-height:1.5;color:#1A1710;}
+  .bub.a{background:#fff;align-self:flex-start;border-top-left-radius:3px;box-shadow:0 1px 1px rgba(0,0,0,.08);}
+  .bub.u{background:#DCF8C6;align-self:flex-end;border-top-right-radius:3px;}
+  .chat.ai .bub.u{background:var(--purple);color:#fff;}
+  .bub .tm{display:block;font-size:9.5px;color:#8F8873;margin-top:4px;text-align:right;}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;gap:10px;align-items:center;align-self:flex-start;max-width:92%;}
+  .pcard .th{width:42px;height:42px;border-radius:9px;background:linear-gradient(135deg,var(--amber),var(--purple));flex-shrink:0;}
+  .pcard .pt{font-size:11.5px;font-weight:700;line-height:1.3;}
+  .pcard .pp{font-size:11px;color:var(--muted);margin-top:2px;}
+  .pcard .add{margin-left:auto;font-size:10px;font-weight:800;color:#fff;background:var(--green);padding:5px 10px;border-radius:999px;white-space:nowrap;}
+  .quick{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;}
+  .quick span{font-size:10.5px;font-weight:700;color:var(--purple);border:1.5px solid var(--purple);border-radius:999px;padding:5px 10px;background:#fff;}
+  .bar-track{height:9px;border-radius:99px;background:#E8DFCB;overflow:hidden;margin:6px 0 4px;}
+  .bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--amber),var(--green));}
+  .ms{font-size:11px;color:var(--muted);display:flex;justify-content:space-between;}
+  .steal{border:1.5px dashed var(--amber);background:var(--amber-100);border-radius:10px;padding:9px 11px;display:flex;align-items:center;gap:10px;font-size:11.5px;font-weight:600;margin-bottom:7px;}
+  .steal s{color:var(--muted-2);font-weight:500;}
+  .steal .tag3{font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--amber-dark);padding:3px 8px;border-radius:999px;}
+  .steal .sbtn{margin-left:auto;font-size:10px;font-weight:800;color:#fff;background:var(--ink);padding:5px 10px;border-radius:999px;}
+  .pdp{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 10px 30px rgba(26,23,16,.08);}
+  .pdp .img{height:130px;border-radius:12px;background:linear-gradient(135deg,#E9D9B8,#C9A56A 60%,#1F2F6B);margin-bottom:12px;position:relative;}
+  .pdp .img span{position:absolute;left:10px;bottom:10px;font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:#fff;color:var(--green);padding:4px 9px;border-radius:999px;}
+  .pdp h5{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;margin:0 0 4px;}
+  .pdp .pr{font-size:18px;font-weight:800;margin-bottom:10px;}
+  .w{border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:11.5px;margin-bottom:7px;display:flex;gap:9px;align-items:flex-start;line-height:1.45;}
+  .w b{font-weight:700;}
+  .w .wi{width:22px;height:22px;border-radius:6px;background:var(--purple-100);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+  .w.edd{background:#E6F5EC;border-color:#BFE3CC;}
+  .w .pin{font-weight:800;color:var(--green);}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media (max-width:900px){.grid3{grid-template-columns:1fr;}}
+  .sc{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:12px;}
+  .sc .who{display:flex;gap:12px;align-items:center;}
+  .sc .who .av{width:42px;height:42px;border-radius:50%;background:var(--purple);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;}
+  .sc .who .nm{font-size:14px;font-weight:800;}
+  .sc .who .ct{font-size:11px;color:var(--muted-2);}
+  .sc p{font-size:12.8px;color:var(--muted);line-height:1.65;}
+  .sc .res{background:var(--green-100);color:#1B4D31;border-radius:10px;padding:10px 12px;font-size:12px;font-weight:600;line-height:1.5;}
+  .sc .feat-tag{align-self:flex-start;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--purple-dark);background:var(--purple-100);padding:4px 10px;border-radius:999px;}
+  table.recap{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;}
+  table.recap th{text-align:left;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--purple);padding:12px 16px;}
+  table.recap td{padding:13px 16px;font-size:12.8px;border-top:1px solid var(--line);vertical-align:top;line-height:1.55;}
+  table.recap td:first-child{font-weight:800;white-space:nowrap;}
+  .recap-wrap{overflow-x:auto;}
+  .pay-stack{display:flex;flex-direction:column;gap:7px;}
+  .dark .mock{color:var(--ink);}
+  .vbox li{display:block;position:relative;padding-left:22px;}
+  .vbox li::before{position:absolute;left:0;top:0;}
+</style>
+</head>
+<body>
+<div class="tri"></div>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="fmark"><div class="fmark-col"><div class="bar"></div><div class="bar"></div></div></div>
+      <span class="wordmark">fastrr</span>
+    </div>
+    <div class="nav-links">
+      <a href="#c1">Arrives</a>
+      <a href="#c2">Guided</a>
+      <a href="#c3">Product page</a>
+      <a href="#c4">Cart</a>
+      <a href="#c5">Checkout</a>
+      <a href="#c6">After</a>
+    </div>
+    <div class="nav-tag">For Khadi India</div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow"><span class="dot"></span>A Customer Journey Proposal — fastrr for Khadi India</div>
+    <h1>Khadi for India, Khadi for all. <span>Here is what happens the moment someone actually arrives.</span></h1>
+    <p class="sub">Khadi India's online store carries ten categories, from a ₹138 lip balm to a ₹4,853 embroidered shawl, under the promise of "100% authentic Khadi, certified by MSME". This proposal follows one customer from the first click to the second order, and shows where fastrr adds value at every step.</p>
+    <div class="hero-meta">
+      <div><div class="k">Prepared For</div><div class="v">Khadi India — E-commerce Team</div></div>
+      <div><div class="k">Format</div><div class="v">One customer, six chapters, three more scenes</div></div>
+      <div><div class="k">Scope</div><div class="v">Connect, Identify, Engage, AI Assistant, PDP, Cart, Checkout</div></div>
+    </div>
+    <div class="scale-strip">
+      <div class="scale-item"><div class="n">40–50%</div><div class="l">Anonymous users we can identify</div></div>
+      <div class="scale-item"><div class="n">95%+</div><div class="l">Address pre-fill at checkout</div></div>
+      <div class="scale-item"><div class="n">96%+</div><div class="l">EDD prediction accuracy</div></div>
+      <div class="scale-item"><div class="n">42M+</div><div class="l">Consumers in the fastrr ecosystem</div></div>
+    </div>
+  </div>
+</header>
+<div class="tri"></div>
+
+<section class="wrap reveal">
+  <div class="section-head">
+    <div class="kicker">How To Read This Proposal</div>
+    <h2>Meet Meera. She is about to shop for her father.</h2>
+    <p>Each chapter below is one moment in her journey. The scenes are illustrative, and the products and prices in them are taken from your store. Each one ends with what fastrr adds at that moment.</p>
+  </div>
+  <div class="persona"><div class="av">M</div><p><b>Meera, 34, Pune.</b> An illustrative customer. It is festive season, she wants something warm and genuine for her father, and she has never bought from Khadi India online. We follow her from first click to her second order.</p></div>
+  <div class="jm">
+    <a href="#c1"><div class="dot2">1</div><div class="t">She arrives</div><div class="s">fastrr Connect, Identify and Engage</div></a>
+    <a href="#c2"><div class="dot2">2</div><div class="t">She is guided</div><div class="s">AI Shopping Assistant</div></a>
+    <a href="#c3"><div class="dot2">3</div><div class="t">She reads the product</div><div class="s">Dynamic EDD, offers, Pay After Delivery</div></a>
+    <a href="#c4"><div class="dot2">4</div><div class="t">She fills the cart</div><div class="s">Milestone bar, AI upsell, steal deals</div></a>
+    <a href="#c5"><div class="dot2">5</div><div class="t">She pays</div><div class="s">One-page, one-click checkout, QuickPay</div></a>
+    <a href="#c6"><div class="dot2">6</div><div class="t">She comes back</div><div class="s">Engage, Save and Subscribe</div></a>
+  </div>
+</section>
+
+<!-- CHAPTER 1 -->
+<section class="chap alt reveal" id="c1">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-pill">Chapter 1 · She arrives</div>
+      <h2>She lands on the store, browses a shawl, and leaves. Nobody knows who she was.</h2>
+      <div class="scene"><b>9:40 pm.</b> Meera taps a festive gifting post and lands on Gift &amp; Hampers. She opens the Khadi Semi-Pashmina Shawl at ₹4,853, scrolls the photos, and closes the tab to answer a message. She never logged in, so to the store she is just a visit.</div>
+    </div>
+    <div class="ch-grid">
+      <div>
+        <div class="without">
+          <div class="wo no"><b>Without fastrr</b>She is an anonymous session. There is no way to reach her, and the interest ends with the tab.</div>
+          <div class="wo yes"><b>With fastrr</b>She is recognised through the ecosystem, and a well-timed WhatsApp message brings her back to the shawl.</div>
+        </div>
+        <div class="vbox"><div class="vh">fastrr Connect</div><h4>The ecosystem behind the recognition</h4><p>fastrr Connect links the store to the Shiprocket network of 1,45,000+ merchants and 42M+ consumers. That network is what lets a returning shopper be recognised without asking her to sign up first.</p></div>
+        <div class="vbox"><div class="vh">fastrr Identify</div><h4>40–50% of anonymous users, identified</h4><p>Because of the ecosystem, we are able to identify about 40–50% of the anonymous users on the platform. For a store with no sign-in wall, that turns a large share of invisible visits into customers you can talk to, with the right consents in place.</p></div>
+        <div class="vbox"><div class="vh">fastrr Engage</div><h4>WhatsApp that remembers what she looked at</h4><p>Engage sends the reminder on WhatsApp, tied to the exact product she viewed and carrying her delivery date.</p>
+          <ul><li>Reminder for the shawl she browsed, with the delivery date to her pincode</li><li>Festive campaigns by category: Gift &amp; Hampers, Men, Women, Wellness</li><li>Back-in-stock alerts for products that sell out, such as the Desi Ghee</li></ul></div>
+        <div class="vbox"><div class="vh">Your strategy manager</div><h4>Someone who plans the WhatsApp, with you</h4><p>You get a dedicated strategy manager for WhatsApp marketing and engagement. They plan the festival calendar, build audience segments, write and test message journeys, and review results with your team every cycle, so Engage is run with you and not left as a tool.</p></div>
+      </div>
+      <div>
+        <div class="device"><div class="screen">
+          <div class="dh wa"><div class="ic">K</div><div>Khadi India<small>Business account</small></div></div>
+          <div class="chat wa">
+            <div class="bub a">Namaste Meera 🙏 The Khadi Semi-Pashmina Shawl you were looking at is still here. <span class="tm">Next morning, 10:05</span></div>
+            <div class="bub a">Delivering to <b>411001</b>? You would have it by <b>Wed, 21 Oct</b>. Genuine Khadi, certified by MSME.</div>
+            <div class="quick"><span>View the shawl</span><span>See gift options</span></div>
+            <div class="bub u">Looks good. Is there something less than ₹5,000? <span class="tm">10:07</span></div>
+          </div>
+        </div></div>
+        <p style="text-align:center;font-size:11px;color:var(--muted-2);margin-top:12px;">Illustrative WhatsApp message. Date and pincode are examples.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 2 -->
+<section class="chap reveal" id="c2">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-pill">Chapter 2 · She is guided</div>
+      <h2>She finds someone to ask, like the person at the counter in a Khadi emporium.</h2>
+      <div class="scene"><b>10:07 am.</b> Meera comes back to the store and opens the chat. In a Gramodyog Bhavan shop, someone would have greeted her, asked who it was for, and put two good options in her hands. She expects the same here.</div>
+    </div>
+    <div class="ch-grid rev">
+      <div>
+        <div class="device"><div class="screen">
+          <div class="dh ai"><div class="ic">AI</div><div>Khadi Shopping Assistant<small>Here to help you choose</small></div></div>
+          <div class="chat ai">
+            <div class="bub a">Namaste! Looking for something for yourself, or a gift?</div>
+            <div class="bub u">A gift for my father. Warm, under ₹5,000.</div>
+            <div class="bub a">Lovely choice. Two good options:</div>
+            <div class="pcard"><div class="th"></div><div><div class="pt">Khadi Woolen Jacket</div><div class="pp">₹1,556</div></div><div class="add">Add</div></div>
+            <div class="pcard"><div class="th"></div><div><div class="pt">Khadi Semi-Pashmina Shawl</div><div class="pp">₹4,853</div></div><div class="add">Add</div></div>
+            <div class="bub u">Is it genuine Khadi?</div>
+            <div class="bub a">Yes. The store carries 100% authentic Khadi, certified by MSME. Want me to check delivery to 411001?</div>
+          </div>
+        </div></div>
+        <p style="text-align:center;font-size:11px;color:var(--muted-2);margin-top:12px;">Illustrative conversation using products from your store.</p>
+      </div>
+      <div>
+        <div class="vbox"><div class="vh">fastrr AI Shopping Assistant</div><h4>A sales manager on the website</h4><p>It does what a good salesperson does in an offline store, but for every visitor at once, at any hour.</p>
+          <ul>
+            <li><b>Greets and asks.</b> Who is it for, what is the occasion, what is the budget.</li>
+            <li><b>Shows the right two or three.</b> Not a grid of 500, but the pieces that fit her answer.</li>
+            <li><b>Answers the questions that stop a sale.</b> Fabric, size, care, delivery, returns.</li>
+            <li><b>Suggests what goes with it.</b> A shawl with a hamper, a kurta with a jacket.</li>
+            <li><b>Adds to cart inside the chat.</b> She never has to leave the conversation.</li>
+          </ul></div>
+        <div class="vbox"><div class="vh">Why it matters for Khadi India</div><p>The range is wide, from fabric and grocery to wellness and gifts, and many shoppers are new to buying Khadi online. The assistant makes a ten-category store feel as easy to shop as one counter.</p></div>
+        <div class="vbox"><div class="vh">The results it brings</div>
+          <ul><li>60–70% of customer tickets deflected</li><li>80% faster first response</li><li>50–60% lower support cost per order</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 3 -->
+<section class="chap alt reveal" id="c3">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-pill">Chapter 3 · She reads the product</div>
+      <h2>The product page answers her three questions before she types them.</h2>
+      <div class="scene"><b>10:12 am.</b> Meera opens the shawl. Before she reads the description she wants to know three things: will it get there in time, is there any offer, and what if she is not sure about paying up front.</div>
+    </div>
+    <div class="ch-grid">
+      <div>
+        <div class="vbox"><div class="vh">Question 1 — "When will it arrive?"</div><h4>Dynamic EDD, pincode already filled</h4><p>The page shows an estimated delivery date for her pincode, pre-filled from the last delivered address on the fastrr network. She does not type anything. For a gift with a date, that answer arrives before she decides.</p>
+          <ul><li>96%+ EDD prediction accuracy, from live courier data</li><li>12–22% product-page-to-cart lift on brands that show EDD</li></ul></div>
+        <div class="vbox"><div class="vh">Question 2 — "Is there an offer?"</div><h4>A bank offers widget</h4><p>The offers our team sources show up right on the product page, so a customer sees the saving before she reaches the cart, and not for the first time at payment.</p></div>
+        <div class="vbox"><div class="vh">Question 3 — "What if I am not sure?"</div><h4>A Pay After Delivery widget</h4><p>A first-time buyer spending ₹4,853 online wants a safety net. The widget tells her she can pay after the parcel is delivered, which takes the biggest hesitation off the page.</p></div>
+      </div>
+      <div>
+        <div class="pdp">
+          <div class="img"><span>100% authentic Khadi</span></div>
+          <h5>Khadi Semi-Pashmina Shawl (Embroidered)</h5>
+          <div class="pr">₹4,853</div>
+          <div class="w edd"><div class="wi">📦</div><div>Delivering to <span class="pin">411001</span> <small>(from your last order)</small><br><b>Get it by Wed, 21 Oct</b></div></div>
+          <div class="w"><div class="wi">%</div><div><b>Bank offers for you</b><br>Card and bank offers sourced by fastrr</div></div>
+          <div class="w"><div class="wi">₹</div><div><b>Pay After Delivery available</b><br>Pay once it arrives</div></div>
+        </div>
+        <p style="text-align:center;font-size:11px;color:var(--muted-2);margin-top:12px;">Illustrative product page. Date and pincode are examples.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 4 -->
+<section class="chap reveal" id="c4">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-pill">Chapter 4 · She fills the cart</div>
+      <h2>The cart gently grows the basket, without feeling like a sales push.</h2>
+      <div class="scene"><b>10:20 am.</b> Meera adds the shawl to her cart. This is the moment she is most committed, and the best moment for a helpful nudge.</div>
+    </div>
+    <div class="ch-grid rev">
+      <div>
+        <div class="mock-wrap">
+          <div class="mock-label">Illustrative Khadi India cart</div>
+          <div class="mock">
+            <div class="mock-item"><div class="mock-thumb"></div><div><div class="t">Khadi Semi-Pashmina Shawl</div><div class="s">Embroidered</div></div><div class="p">₹4,853</div></div>
+            <div class="mock-h">Your next milestone</div>
+            <div class="bar-track"><div class="bar-fill" style="width:82%"></div></div>
+            <div class="ms"><span>Add a little more to unlock a free gift</span><span>Almost there</span></div>
+            <div class="mock-h" style="margin-top:14px;">Suggested for you</div>
+            <div class="opt sel"><div>Khadi Honey 1kg<small>Often added to a gift</small></div><span class="badge am">+ ₹365</span></div>
+            <div class="mock-h">Steal deal</div>
+            <div class="steal"><span class="tag3">Steal</span><span>Khadi Lip Balm <s>₹138</s> for less</span><span class="sbtn">Add</span></div>
+            <div class="mock-btn">Go to checkout</div>
+          </div>
+        </div>
+        <p style="text-align:center;font-size:11px;color:var(--muted-2);margin-top:12px;">Illustrative. Milestones and steal prices are set by you.</p>
+      </div>
+      <div>
+        <div class="vbox"><div class="vh">Milestone bar</div><h4>A goal that is always visible</h4><p>A progress bar shows how close she is to the next reward, such as free shipping or a free gift. You set the milestones, and the bar does the persuading, quietly.</p></div>
+        <div class="vbox"><div class="vh">AI upsell</div><h4>The right add-on, picked for her cart</h4><p>The suggestion changes with what is in the cart. A gift shawl might bring up honey from the Grocery range, while a kurta might bring up a matching jacket. It looks like advice from the counter, not a banner.</p></div>
+        <div class="vbox"><div class="vh">Steal deals</div><h4>A small price drop on a small add-on</h4><p>A low-priced item such as a lip balm or towel can be offered at a special price just for adding it now. It is a simple way to raise units per order while she is already buying.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 5 -->
+<section class="chap dark reveal" id="c5">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-pill">Chapter 5 · She pays</div>
+      <h2>One page. One click. Everything she needs, already filled in.</h2>
+      <div class="scene"><b>10:26 am.</b> Meera taps Checkout. The store has never seen her address, but the fastrr network has. This is where most stores lose people, and where fastrr works hardest.</div>
+    </div>
+    <div class="ch-grid">
+      <div>
+        <div class="vbox"><div class="vh">Checkout builder</div><h4>A checkout that looks like Khadi India</h4><p>The checkout builder lets your team arrange the page and choose what appears on it: offers, upsell, payment modes and their order. It carries your look and wording, and you can change it without a developer.</p></div>
+        <div class="vbox"><div class="vh">One page, one click</div><h4>No steps, no forms</h4><p>Address, delivery date, offers and payment sit on a single page, and a recognised customer finishes in one click.</p></div>
+        <div class="vbox"><div class="vh">On the checkout page</div>
+          <ul>
+            <li><b>Address pre-fill, 95%+.</b> Recognised customers see their address already filled in, up to 99% for Tier 1.</li>
+            <li><b>Bank offers.</b> Offers sourced by the fastrr team, shown as their own block.</li>
+            <li><b>EDD on checkout.</b> The delivery date appears again at the moment of payment.</li>
+            <li><b>Pay After Delivery.</b> A UPI mandate that charges only once delivery is confirmed.</li>
+            <li><b>Upsell on checkout.</b> One last relevant add-on, in one tap.</li>
+            <li><b>Risk-checked COD.</b> If you offer COD, each order is scored for risk before it ships.</li>
+          </ul></div>
+        <div class="vbox"><div class="vh">QuickPay</div><h4>Our payment intelligence layer</h4><p>QuickPay pins each returning customer's preferred payment method as a single tap, and puts the modes she is most likely to complete first. Fewer failed payments, fewer abandoned carts, and a faster second order.</p></div>
+      </div>
+      <div>
+        <div class="mock-wrap" style="background:#18244F;">
+          <div class="mock-label">Illustrative one-page checkout</div>
+          <div class="mock">
+            <div class="mock-h" style="margin-top:0;">Deliver to</div>
+            <div class="opt sel"><div>Meera · 411001, Pune<small>Address pre-filled from the network</small></div><span class="badge">95%+</span></div>
+            <div class="mock-edd">📦 Get it by Wed, 21 Oct · SDD/NDD shown where available</div>
+            <div class="mock-h">Offers</div>
+            <div class="opt"><div>Bank offer<small>Sourced by the fastrr team</small></div><span class="badge am">Applied</span></div>
+            <div class="mock-h">Add one more</div>
+            <div class="opt"><div>Khadi Honey 1kg<small>One tap to add</small></div><span class="badge am">+ ₹365</span></div>
+            <div class="mock-h">Pay with</div>
+            <div class="opt sel"><div>UPI<small>Your usual app, pinned</small></div><span class="badge">QuickPay</span></div>
+            <div class="opt"><div>Pay After Delivery<small>Charged only once it arrives</small></div></div>
+            <div class="mock-btn">Place Order · one click</div>
+          </div>
+        </div>
+        <p style="text-align:center;font-size:11px;color:#8F9BC9;margin-top:12px;">Illustrative checkout. Offers and amounts are examples.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 6 -->
+<section class="chap alt reveal" id="c6">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="ch-pill">Chapter 6 · She comes back</div>
+      <h2>The first order is a start. Engage and Save and Subscribe make it a habit.</h2>
+      <div class="scene"><b>A week later.</b> The shawl arrives on the promised date. Her father likes it, and Meera notices the honey she added. Now the store's job is to be there when she needs it again.</div>
+    </div>
+    <div class="ch-grid">
+      <div>
+        <div class="vbox"><div class="vh">fastrr Engage</div><h4>Updates, care and the next occasion</h4><p>Order confirmations, shipping updates and delivery alerts go out on WhatsApp. After delivery, a care message and a review request follow, then a reminder for the next occasion, with your strategy manager tuning timing and content.</p></div>
+        <div class="vbox"><div class="vh">Save and Subscribe</div><h4>Honey, grocery and wellness on repeat</h4><p>Everyday Khadi products such as honey, grocery items and wellness products are bought again and again. Save and Subscribe lets a customer set a regular delivery at a better price for committing, so the second and third orders arrive without her having to remember.</p>
+          <ul><li>Predictable repeat revenue for consumables</li><li>A reason to choose your store over a marketplace each month</li></ul></div>
+        <div class="vbox"><div class="vh">QuickPay again</div><h4>The second order takes seconds</h4><p>Her address and preferred payment method are already remembered, so reordering is one tap.</p></div>
+      </div>
+      <div>
+        <div class="device"><div class="screen">
+          <div class="dh wa"><div class="ic">K</div><div>Khadi India<small>Business account</small></div></div>
+          <div class="chat wa">
+            <div class="bub a">Your Khadi Semi-Pashmina Shawl was delivered. We hope your father loves it 🙏 <span class="tm">Day 7</span></div>
+            <div class="bub a">Care tip: store it folded, away from direct sun. How was your experience?</div>
+            <div class="quick"><span>Great</span><span>Could be better</span></div>
+            <div class="bub a">Your Khadi Honey 1kg is a favourite. Want it delivered every month, at a saving?</div>
+            <div class="quick"><span>Subscribe</span><span>Not now</span></div>
+          </div>
+        </div></div>
+        <p style="text-align:center;font-size:11px;color:var(--muted-2);margin-top:12px;">Illustrative WhatsApp journey.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE SCENES -->
+<section class="wrap reveal" style="padding-top:70px;">
+  <div class="section-head">
+    <div class="kicker">Three More Scenes</div>
+    <h2>Not every customer is Meera</h2>
+    <p>The same ecosystem works differently for different shoppers. Here are three more illustrative customers.</p>
+  </div>
+  <div class="grid3">
+    <div class="sc"><div class="who"><div class="av">R</div><div><div class="nm">Rahul, Delhi</div><div class="ct">Needs it by tomorrow</div></div></div><span class="feat-tag">SDD / NDD</span><p>Rahul remembered a family occasion late and wants a kurta by tomorrow. On the product page and at checkout, he sees same-day and next-day delivery options for his pincode, and picks one.</p><div class="res">Urgent gifts stop being lost to a delivery date that is unknown.</div></div>
+    <div class="sc"><div class="who"><div class="av">S</div><div><div class="nm">Sunita, Jaipur</div><div class="ct">Buys honey every month</div></div></div><span class="feat-tag">Save and Subscribe · QuickPay</span><p>Sunita has ordered Khadi Honey three times. Engage offers her a monthly subscription at a better price. From then on, QuickPay renews it in one tap, and she skips or pauses when she likes.</p><div class="res">A repeat buyer becomes a predictable monthly order.</div></div>
+    <div class="sc"><div class="who"><div class="av">V</div><div><div class="nm">Mr. Verma, Lucknow</div><div class="ct">First online order, unsure</div></div></div><span class="feat-tag">Pay After Delivery · AI Assistant</span><p>Mr. Verma wants Khadi fabric but has never paid online to a new store. The assistant answers his questions about the cloth, and the widget on the page tells him he can pay after delivery.</p><div class="res">A hesitant first-time buyer completes the order, with no risk on his side.</div></div>
+  </div>
+</section>
+
+<!-- RECAP -->
+<section class="wrap reveal">
+  <div class="section-head">
+    <div class="kicker">The Whole Journey On One Page</div>
+    <h2>Where fastrr adds value, step by step</h2>
+  </div>
+  <div class="recap-wrap">
+  <table class="recap">
+    <thead><tr><th>Stage</th><th>What the customer experiences</th><th>What fastrr adds</th></tr></thead>
+    <tbody>
+      <tr><td>1 · Arrives</td><td>Browses, leaves without signing in</td><td>Connect and Identify recognise 40–50% of anonymous users. Engage brings them back on WhatsApp, planned by your strategy manager.</td></tr>
+      <tr><td>2 · Guided</td><td>Asks for help choosing</td><td>AI Shopping Assistant works as a sales manager, recommends and adds to cart in the chat.</td></tr>
+      <tr><td>3 · Product page</td><td>Checks delivery, offers, payment safety</td><td>Dynamic EDD with pre-filled pincode, bank offers widget, Pay After Delivery widget.</td></tr>
+      <tr><td>4 · Cart</td><td>Adds items, sees what else fits</td><td>Milestone bar, AI upsell, steal deals.</td></tr>
+      <tr><td>5 · Checkout</td><td>Pays on one page in one click</td><td>Checkout builder, 95%+ address pre-fill, bank offers, EDD, Pay After Delivery, upsell, SDD/NDD, QuickPay.</td></tr>
+      <tr><td>6 · After</td><td>Receives, reviews, reorders</td><td>Engage journeys, Save and Subscribe, one-tap reorder.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="wrap reveal">
+  <div class="impact-band">
+    <div class="impact-head">
+      <h3>The impact, on its own</h3>
+      <p>Shiprocket-network benchmarks, to be validated against Khadi India's own traffic and orders.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-cell"><div class="n">40–50%</div><div class="l">Anonymous users we are able to identify through the ecosystem</div></div>
+      <div class="stat-cell"><div class="n">95%+</div><div class="l">Average address pre-fill at checkout, up to 99% for Tier 1 brands</div></div>
+      <div class="stat-cell"><div class="n">96%+</div><div class="l">EDD prediction accuracy, from live courier data</div></div>
+      <div class="stat-cell"><div class="n">12–22%</div><div class="l">Product-page-to-cart lift from showing EDD on the PDP</div></div>
+      <div class="stat-cell"><div class="n">Up to 45%</div><div class="l">RTO reduction with the full pre-shipment verification stack</div></div>
+      <div class="stat-cell"><div class="n">8L+</div><div class="l">Orders delivered via Shiprocket, every single day</div></div>
+    </div>
+    <div class="impact-foot">Sourced from Shiprocket Martech product benchmarks and brand case studies, not projections specific to Khadi India.</div>
+  </div>
+  <div class="case-grid" style="margin-top:16px;">
+    <div class="case"><span class="cat">Fashion · RTO Suite</span><h4>Pre-shipment confirmation</h4><p class="d">A fashion brand combined WhatsApp confirmation with risk-based verification and cut RTO within 45 days.</p><div class="cs"><div class="n">24% → 14%</div><div class="l">RTO RATE</div></div></div>
+    <div class="case"><span class="cat">Personal Care · Quick Pay</span><h4>Fixderma</h4><p class="d">Instant Quick Pay with auto-applied loyalty points moved the payment mix decisively toward prepaid.</p><div class="cs"><div class="n">80% → 92%</div><div class="l">PREPAID SHARE</div></div></div>
+    <div class="case"><span class="cat">Fashion · Payment AI</span><h4>AI-suggested payment mode</h4><p class="d">Suggesting the right payment mode at checkout reduced abandonment at the payment step within 8 weeks.</p><div class="cs"><div class="n">28% → 19%</div><div class="l">PAYMENT ABANDONMENT</div></div></div>
+  </div>
+</section>
+
+<section class="wrap reveal">
+  <div class="section-head">
+    <div class="kicker">Getting To Live</div>
+    <h2>Three steps from here</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="sn">01</div><h4>Agree the journey scope</h4><p>Choose which chapters to switch on first. Many brands begin with checkout and Identify, then add the assistant and Engage.</p></div>
+    <div class="step"><div class="sn">02</div><h4>Integrate and configure</h4><p>fastrr goes onto the store, with the checkout builder, EDD, offers and the first WhatsApp journeys set up around Khadi India's ten categories.</p></div>
+    <div class="step"><div class="sn">03</div><h4>Go live with your strategy manager</h4><p>The strategy manager works with your team on the festive calendar and reviews the first numbers against your own traffic and orders.</p></div>
+  </div>
+  <div class="cta-band">
+    <div>
+      <h3>Let's walk Meera's journey on your store</h3>
+      <p>We can show each chapter live on a sample of your pages and agree where to start. Commercials follow once the scope is clear.</p>
+    </div>
+    <div class="cta-btn">Let's Talk Journey</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="fmark"><div class="fmark-col"><div class="bar"></div><div class="bar"></div></div></div>
+        <span class="wordmark">fastrr</span>
+      </div>
+      <p>Prepared for Khadi India — a customer journey proposal. All customers, messages and screens are illustrative. Commercials shared separately.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.04});
+  els.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
